@@ -5,17 +5,7 @@ import (
 	"io"
 	"net/http"
 	"todo/models"
-
-	"github.com/jmoiron/sqlx"
 )
-
-type TaskRepository struct {
-	db *sqlx.DB
-}
-
-func NewTaskRepository(db *sqlx.DB) *TaskRepository {
-	return &TaskRepository{db: db}
-}
 
 func (c *TaskRepository) AddTask(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {

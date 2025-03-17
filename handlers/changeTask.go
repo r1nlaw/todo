@@ -27,7 +27,7 @@ func (c *TaskRepository) ChangeTask(w http.ResponseWriter, r *http.Request) {
 	}
 
 	query := `UPDATE tasks SET name = $1, content = $2, status = $3 WHERE id = $4`
-	res, err := c.db.Exec(query, inputData.Name, inputData.Content, inputData.Status, inputData.Id)
+	res, err := c.Db.Exec(query, inputData.Name, inputData.Content, inputData.Status, inputData.Id)
 	if err != nil {
 		http.Error(w, "error updating task", http.StatusInternalServerError)
 		return

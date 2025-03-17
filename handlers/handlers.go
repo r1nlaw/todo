@@ -14,9 +14,9 @@ type TodoList interface {
 }
 
 type TaskRepository struct {
-	db *sqlx.DB
+	Db *sqlx.DB
 }
 
 func NewTaskRepository(db *sqlx.DB) *TaskRepository {
-	return &TaskRepository{db: db}
+	return &TaskRepository{Db: db}
 }

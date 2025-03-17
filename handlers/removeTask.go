@@ -26,7 +26,7 @@ func (c *TaskRepository) RemoveTask(w http.ResponseWriter, r *http.Request) {
 	}
 
 	query := `DELETE FROM tasks WHERE id = $1`
-	result, err := c.db.Exec(query, inputData.Id)
+	result, err := c.Db.Exec(query, inputData.Id)
 	if err != nil {
 		http.Error(w, "cant deleting task", http.StatusInternalServerError)
 		return

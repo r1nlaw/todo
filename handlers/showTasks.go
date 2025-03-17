@@ -14,7 +14,7 @@ func (c *TaskRepository) ShowTasks(w http.ResponseWriter, r *http.Request) {
 	var tasks []models.Todo
 
 	query := `SELECT id, name, content, status FROM tasks`
-	err := c.db.Select(&tasks, query)
+	err := c.Db.Select(&tasks, query)
 	if err != nil {
 		http.Error(w, "cant get tasks from database", http.StatusInternalServerError)
 		return

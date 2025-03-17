@@ -29,7 +29,7 @@ func (c *TaskRepository) AddTask(w http.ResponseWriter, r *http.Request) {
 	query := `INSERT INTO tasks (name, content, status) VALUES ($1, $2, $3) RETURNING id`
 
 	var newID int
-	err = c.db.QueryRow(query, inputData.Name, inputData.Content, inputData.Status).Scan(&newID)
+	err = c.Db.QueryRow(query, inputData.Name, inputData.Content, inputData.Status).Scan(&newID)
 	if err != nil {
 		http.Error(w, "failed to insert task", http.StatusInternalServerError)
 		return
